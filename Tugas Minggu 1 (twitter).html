@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; PROYEK SAIN DATA</title>
+    <title>TUGAS 1 (crawling data twitter) &#8212; PROYEK SAIN DATA</title>
   
   
   
@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="TUGAS 2 (PIPELINES)" href="Tugas2_pipelines.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="Tugas%20Minggu%201%20%28berita%29.html" />
+    <link rel="prev" title="TUGAS 1 (crawling data berita)" href="Tugas%20Minggu%201%20%28berita%29.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,8 +162,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Task</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tugas%20Minggu%201%20%28artikel%29.html">TUGAS 1 (crawling data artikel)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas%20Minggu%201%20%28berita%29.html">TUGAS 1 (crawling data berita)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TUGAS 1 (crawling data twitter)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas2_pipelines.html">TUGAS 2 (PIPELINES)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas3_PCA.html">TUGAS 3 (PCA)</a></li>
 </ul>
 
     </div>
@@ -365,9 +369,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -378,19 +380,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>TUGAS 1 (crawling data twitter)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -400,7 +394,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tugas-1-crawling-data-twitter">
+<h1>TUGAS 1 (crawling data twitter)<a class="headerlink" href="#tugas-1-crawling-data-twitter" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="o">=</span><span class="m">1</span><span class="w"> </span>https://github.com/twintproject/twint.git
 <span class="o">!</span><span class="nb">cd</span><span class="w"> </span>/content/twint<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>-r<span class="w"> </span>requirements.txt
@@ -411,228 +407,38 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;twint&#39;...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remote: Enumerating objects: 47, done.
-remote: Counting objects:   2% (1/47)
-remote: Counting objects:   4% (2/47)
-remote: Counting objects:   6% (3/47)
-remote: Counting objects:   8% (4/47)
-remote: Counting objects:  10% (5/47)
-remote: Counting objects:  12% (6/47)
-remote: Counting objects:  14% (7/47)
-remote: Counting objects:  17% (8/47)
-remote: Counting objects:  19% (9/47)
-remote: Counting objects:  21% (10/47)
-remote: Counting objects:  23% (11/47)
-remote: Counting objects:  25% (12/47)
-remote: Counting objects:  27% (13/47)
-remote: Counting objects:  29% (14/47)
-remote: Counting objects:  31% (15/47)
-remote: Counting objects:  34% (16/47)
-remote: Counting objects:  36% (17/47)
-remote: Counting objects:  38% (18/47)
-remote: Counting objects:  40% (19/47)
-remote: Counting objects:  42% (20/47)
-remote: Counting objects:  44% (21/47)
-remote: Counting objects:  46% (22/47)
-remote: Counting objects:  48% (23/47)
-remote: Counting objects:  51% (24/47)
-remote: Counting objects:  53% (25/47)
-remote: Counting objects:  55% (26/47)
-remote: Counting objects:  57% (27/47)
-remote: Counting objects:  59% (28/47)
-remote: Counting objects:  61% (29/47)
-remote: Counting objects:  63% (30/47)
-remote: Counting objects:  65% (31/47)
-remote: Counting objects:  68% (32/47)
-remote: Counting objects:  70% (33/47)
-remote: Counting objects:  72% (34/47)
-remote: Counting objects:  74% (35/47)
-remote: Counting objects:  76% (36/47)
-remote: Counting objects:  78% (37/47)
-remote: Counting objects:  80% (38/47)
-remote: Counting objects:  82% (39/47)
-remote: Counting objects:  85% (40/47)
-remote: Counting objects:  87% (41/47)
-remote: Counting objects:  89% (42/47)
-remote: Counting objects:  91% (43/47)
-remote: Counting objects:  93% (44/47)
-remote: Counting objects:  95% (45/47)
-remote: Counting objects:  97% (46/47)
-remote: Counting objects: 100% (47/47)
-remote: Counting objects: 100% (47/47), done.
-remote: Compressing objects:   2% (1/44)
-remote: Compressing objects:   4% (2/44)
-remote: Compressing objects:   6% (3/44)
-remote: Compressing objects:   9% (4/44)
-remote: Compressing objects:  11% (5/44)
-remote: Compressing objects:  13% (6/44)
-remote: Compressing objects:  15% (7/44)
-remote: Compressing objects:  18% (8/44)
-remote: Compressing objects:  20% (9/44)
-remote: Compressing objects:  22% (10/44)
-remote: Compressing objects:  25% (11/44)
-remote: Compressing objects:  27% (12/44)
-remote: Compressing objects:  29% (13/44)
-remote: Compressing objects:  31% (14/44)
-remote: Compressing objects:  34% (15/44)
-remote: Compressing objects:  36% (16/44)
-remote: Compressing objects:  38% (17/44)
-remote: Compressing objects:  40% (18/44)
-remote: Compressing objects:  43% (19/44)
-remote: Compressing objects:  45% (20/44)
-remote: Compressing objects:  47% (21/44)
-remote: Compressing objects:  50% (22/44)
-remote: Compressing objects:  52% (23/44)
-remote: Compressing objects:  54% (24/44)
-remote: Compressing objects:  56% (25/44)
-remote: Compressing objects:  59% (26/44)
-remote: Compressing objects:  61% (27/44)
-remote: Compressing objects:  63% (28/44)
-remote: Compressing objects:  65% (29/44)
-remote: Compressing objects:  68% (30/44)
-remote: Compressing objects:  70% (31/44)
-remote: Compressing objects:  72% (32/44)
-remote: Compressing objects:  75% (33/44)
-remote: Compressing objects:  77% (34/44)
-remote: Compressing objects:  79% (35/44)
-remote: Compressing objects:  81% (36/44)
-remote: Compressing objects:  84% (37/44)
-remote: Compressing objects:  86% (38/44)
-remote: Compressing objects:  88% (39/44)
-remote: Compressing objects:  90% (40/44)
-remote: Compressing objects:  93% (41/44)
-remote: Compressing objects:  95% (42/44)
-remote: Compressing objects:  97% (43/44)
-remote: Compressing objects: 100% (44/44)
-remote: Compressing objects: 100% (44/44), done.
-remote: Total 47 (delta 3), reused 14 (delta 0), pack-reused 0
-Unpacking objects:   2% (1/47)
-Unpacking objects:   4% (2/47)
-Unpacking objects:   6% (3/47)
-Unpacking objects:   8% (4/47)
-Unpacking objects:  10% (5/47)
-Unpacking objects:  12% (6/47)
-Unpacking objects:  14% (7/47)
-Unpacking objects:  17% (8/47)
-Unpacking objects:  19% (9/47)
-Unpacking objects:  21% (10/47)
-Unpacking objects:  23% (11/47)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unpacking objects:  25% (12/47)
-Unpacking objects:  27% (13/47)
-Unpacking objects:  29% (14/47)
-Unpacking objects:  31% (15/47)
-Unpacking objects:  34% (16/47)
-Unpacking objects:  36% (17/47)
-Unpacking objects:  38% (18/47)
-Unpacking objects:  40% (19/47)
-Unpacking objects:  42% (20/47)
-Unpacking objects:  44% (21/47)
-Unpacking objects:  46% (22/47)
-Unpacking objects:  48% (23/47)
-Unpacking objects:  51% (24/47)
-Unpacking objects:  53% (25/47)
-Unpacking objects:  55% (26/47)
-Unpacking objects:  57% (27/47)
-Unpacking objects:  59% (28/47)
-Unpacking objects:  61% (29/47)
-Unpacking objects:  63% (30/47)
-Unpacking objects:  65% (31/47)
-Unpacking objects:  68% (32/47)
-Unpacking objects:  70% (33/47)
-Unpacking objects:  72% (34/47)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unpacking objects:  74% (35/47)
-Unpacking objects:  76% (36/47)
-Unpacking objects:  78% (37/47)
-Unpacking objects:  80% (38/47), 32.94 KiB | 65.00 KiB/s
-Unpacking objects:  82% (39/47), 32.94 KiB | 65.00 KiB/s
-Unpacking objects:  85% (40/47), 32.94 KiB | 65.00 KiB/s
-Unpacking objects:  87% (41/47), 32.94 KiB | 65.00 KiB/s
-Unpacking objects:  89% (42/47), 32.94 KiB | 65.00 KiB/s
-Unpacking objects:  91% (43/47), 32.94 KiB | 65.00 KiB/s
-Unpacking objects:  93% (44/47), 32.94 KiB | 65.00 KiB/s
-Unpacking objects:  95% (45/47), 32.94 KiB | 65.00 KiB/s
-Unpacking objects:  97% (46/47), 32.94 KiB | 65.00 KiB/s
-Unpacking objects: 100% (47/47), 32.94 KiB | 65.00 KiB/s
-Unpacking objects: 100% (47/47), 42.93 KiB | 68.00 KiB/s, done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fatal: destination path &#39;twint&#39; already exists and is not an empty directory.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/bin/bash: line 0: cd: /content/twint: No such file or directory
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting aiohttp==3.7.0
-  Downloading aiohttp-3.7.0-cp38-cp38-manylinux2014_x86_64.whl (1.5 MB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/1.5 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">1.5/1.5 MB</span> <span class=" -Color -Color-Red">88.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.5/1.5 MB</span> <span class=" -Color -Color-Red">43.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.8/dist-packages (from aiohttp==3.7.0) (6.0.4)
-Collecting async-timeout&lt;4.0,&gt;=3.0
-  Downloading async_timeout-3.0.1-py3-none-any.whl (8.2 kB)
-Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp==3.7.0) (1.8.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting chardet&lt;4.0,&gt;=2.0
-  Downloading chardet-3.0.4-py2.py3-none-any.whl (133 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/133.4 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">133.4/133.4 KB</span> <span class=" -Color -Color-Red">16.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.8/dist-packages (from aiohttp==3.7.0) (22.2.0)
-Requirement already satisfied: idna&gt;=2.0 in /usr/local/lib/python3.8/dist-packages (from yarl&lt;2.0,&gt;=1.0-&gt;aiohttp==3.7.0) (2.10)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: chardet, async-timeout, aiohttp
-  Attempting uninstall: chardet
-    Found existing installation: chardet 4.0.0
-    Uninstalling chardet-4.0.0:
-      Successfully uninstalled chardet-4.0.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Attempting uninstall: async-timeout
-    Found existing installation: async-timeout 4.0.2
-    Uninstalling async-timeout-4.0.2:
-      Successfully uninstalled async-timeout-4.0.2
-  Attempting uninstall: aiohttp
-    Found existing installation: aiohttp 3.8.4
-    Uninstalling aiohttp-3.8.4:
-      Successfully uninstalled aiohttp-3.8.4
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed aiohttp-3.7.0 async-timeout-3.0.1 chardet-3.0.4
+Requirement already satisfied: aiohttp==3.7.0 in /usr/local/lib/python3.9/dist-packages (3.7.0)
+Requirement already satisfied: async-timeout&lt;4.0,&gt;=3.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (3.0.1)
+Requirement already satisfied: chardet&lt;4.0,&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (3.0.4)
+Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (22.2.0)
+Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (1.8.2)
+Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (6.0.4)
+Requirement already satisfied: idna&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from yarl&lt;2.0,&gt;=1.0-&gt;aiohttp==3.7.0) (2.10)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: nest_asyncio in /usr/local/lib/python3.8/dist-packages (1.5.6)
+Requirement already satisfied: nest_asyncio in /usr/local/lib/python3.9/dist-packages (1.5.6)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting snscrape
-  Downloading snscrape-0.6.0.20230303-py3-none-any.whl (71 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/71.6 KB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">71.6/71.6 KB</span> <span class=" -Color -Color-Red">6.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: requests[socks] in /usr/local/lib/python3.8/dist-packages (from snscrape) (2.25.1)
-Requirement already satisfied: filelock in /usr/local/lib/python3.8/dist-packages (from snscrape) (3.9.0)
-Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.8/dist-packages (from snscrape) (4.6.3)
-Requirement already satisfied: lxml in /usr/local/lib/python3.8/dist-packages (from snscrape) (4.9.2)
-Requirement already satisfied: pytz in /usr/local/lib/python3.8/dist-packages (from snscrape) (2022.7.1)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.8/dist-packages (from requests[socks]-&gt;snscrape) (1.26.14)
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.8/dist-packages (from requests[socks]-&gt;snscrape) (2.10)
-Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/local/lib/python3.8/dist-packages (from requests[socks]-&gt;snscrape) (3.0.4)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.8/dist-packages (from requests[socks]-&gt;snscrape) (2022.12.7)
-Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/lib/python3.8/dist-packages (from requests[socks]-&gt;snscrape) (1.7.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: snscrape
-Successfully installed snscrape-0.6.0.20230303
+Requirement already satisfied: snscrape in /usr/local/lib/python3.9/dist-packages (0.6.1.20230314)
+Requirement already satisfied: requests[socks] in /usr/local/lib/python3.9/dist-packages (from snscrape) (2.25.1)
+Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.9/dist-packages (from snscrape) (4.9.3)
+Requirement already satisfied: filelock in /usr/local/lib/python3.9/dist-packages (from snscrape) (3.9.0)
+Requirement already satisfied: lxml in /usr/local/lib/python3.9/dist-packages (from snscrape) (4.9.2)
+Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from beautifulsoup4-&gt;snscrape) (2.4)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (2.10)
+Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (3.0.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (2022.12.7)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (1.26.15)
+Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/lib/python3.9/dist-packages (from requests[socks]-&gt;snscrape) (1.7.1)
 </pre></div>
 </div>
 </div>
@@ -680,122 +486,123 @@ Successfully installed snscrape-0.6.0.20230303
 <span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">max_tweets</span><span class="p">:</span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span>         <span class="k">break</span>
 
-<span class="nn">/usr/local/lib/python3.8/dist-packages/snscrape/modules/twitter.py</span> in <span class="ni">get_items</span><span class="nt">(self)</span>
+<span class="nn">/usr/local/lib/python3.9/dist-packages/snscrape/modules/twitter.py</span> in <span class="ni">get_items</span><span class="nt">(self)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1655</span>                 <span class="k">del</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;cursor&#39;</span><span class="p">]</span>
 <span class="g g-Whitespace">   </span><span class="mi">1656</span> 
 <span class="ne">-&gt; </span><span class="mi">1657</span>                 <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iter_api_data</span><span class="p">(</span><span class="s1">&#39;https://api.twitter.com/2/search/adaptive.json&#39;</span><span class="p">,</span> <span class="n">_TwitterAPIType</span><span class="o">.</span><span class="n">V2</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">paginationParams</span><span class="p">,</span> <span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cursor</span><span class="p">):</span>
 <span class="g g-Whitespace">   </span><span class="mi">1658</span>                         <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v2_timeline_instructions_to_tweets_or_users</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1659</span> 
 
-<span class="nn">/usr/local/lib/python3.8/dist-packages/snscrape/modules/twitter.py</span> in <span class="ni">_iter_api_data</span><span class="nt">(self, endpoint, apiType, params, paginationParams, cursor, direction)</span>
+<span class="nn">/usr/local/lib/python3.9/dist-packages/snscrape/modules/twitter.py</span> in <span class="ni">_iter_api_data</span><span class="nt">(self, endpoint, apiType, params, paginationParams, cursor, direction)</span>
 <span class="g g-Whitespace">    </span><span class="mi">759</span>                 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">760</span>                         <span class="n">_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Retrieving scroll page </span><span class="si">{</span><span class="n">cursor</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">761</span>                         <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_api_data</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">apiType</span><span class="p">,</span> <span class="n">reqParams</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">762</span>                         <span class="k">yield</span> <span class="n">obj</span>
 <span class="g g-Whitespace">    </span><span class="mi">763</span> 
 
-<span class="nn">/usr/local/lib/python3.8/dist-packages/snscrape/modules/twitter.py</span> in <span class="ni">_get_api_data</span><span class="nt">(self, endpoint, apiType, params)</span>
+<span class="nn">/usr/local/lib/python3.9/dist-packages/snscrape/modules/twitter.py</span> in <span class="ni">_get_api_data</span><span class="nt">(self, endpoint, apiType, params)</span>
 <span class="g g-Whitespace">    </span><span class="mi">725</span>                 <span class="k">if</span> <span class="n">apiType</span> <span class="ow">is</span> <span class="n">_TwitterAPIType</span><span class="o">.</span><span class="n">GRAPHQL</span><span class="p">:</span>
 <span class="nn">    726                         params = urllib.parse.urlencode({k: json.dumps(v, separators = (&#39;,&#39;, &#39;:&#39;)) for k, v</span> in <span class="ni">params.items</span><span class="nt">()}, quote_via = urllib.parse.quote)</span>
 <span class="ne">--&gt; </span><span class="mi">727</span>                 <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">params</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_apiHeaders</span><span class="p">,</span> <span class="n">responseOkCallback</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_api_response</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">728</span>                 <span class="k">try</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">729</span>                         <span class="n">obj</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
-<span class="nn">/usr/local/lib/python3.8/dist-packages/snscrape/base.py</span> in <span class="ni">_get</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="nn">/usr/local/lib/python3.9/dist-packages/snscrape/base.py</span> in <span class="ni">_get</span><span class="nt">(self, *args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">249</span> 
 <span class="g g-Whitespace">    </span><span class="mi">250</span>         <span class="k">def</span> <span class="nf">_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">251</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">252</span> 
 <span class="g g-Whitespace">    </span><span class="mi">253</span>         <span class="k">def</span> <span class="nf">_post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-<span class="nn">/usr/local/lib/python3.8/dist-packages/snscrape/base.py</span> in <span class="ni">_request</span><span class="nt">(self, method, url, params, data, headers, timeout, responseOkCallback, allowRedirects, proxies)</span>
+<span class="nn">/usr/local/lib/python3.9/dist-packages/snscrape/base.py</span> in <span class="ni">_request</span><span class="nt">(self, method, url, params, data, headers, timeout, responseOkCallback, allowRedirects, proxies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">201</span>                                 <span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;... with environmentSettings: </span><span class="si">{</span><span class="n">environmentSettings</span><span class="si">!r}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">202</span>                         <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">203</span>                                 <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">allow_redirects</span> <span class="o">=</span> <span class="n">allowRedirects</span><span class="p">,</span> <span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span><span class="p">,</span> <span class="o">**</span><span class="n">environmentSettings</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">204</span>                         <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">205</span>                                 <span class="k">if</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retries</span><span class="p">:</span>
 
-<span class="nn">/usr/local/lib/python3.8/dist-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="nn">/usr/local/lib/python3.9/dist-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">653</span> 
 <span class="g g-Whitespace">    </span><span class="mi">654</span>         <span class="c1"># Send the request</span>
 <span class="ne">--&gt; </span><span class="mi">655</span>         <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">656</span> 
 <span class="g g-Whitespace">    </span><span class="mi">657</span>         <span class="c1"># Total elapsed time of the request (approximately)</span>
 
-<span class="nn">/usr/local/lib/python3.8/dist-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="nn">/usr/local/lib/python3.9/dist-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">437</span>         <span class="k">try</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">438</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">chunked</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">439</span>                 <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">440</span>                     <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">441</span>                     <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
 
-<span class="nn">/usr/local/lib/python3.8/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
+<span class="nn">/usr/local/lib/python3.9/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
 <span class="g g-Whitespace">    </span><span class="mi">701</span> 
 <span class="g g-Whitespace">    </span><span class="mi">702</span>             <span class="c1"># Make the request on the httplib connection object.</span>
 <span class="ne">--&gt; </span><span class="mi">703</span>             <span class="n">httplib_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">704</span>                 <span class="n">conn</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">705</span>                 <span class="n">method</span><span class="p">,</span>
 
-<span class="nn">/usr/local/lib/python3.8/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="nn">/usr/local/lib/python3.9/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
 <span class="g g-Whitespace">    </span><span class="mi">447</span>                     <span class="c1"># Python 3 (including for exceptions like SystemExit).</span>
 <span class="g g-Whitespace">    </span><span class="mi">448</span>                     <span class="c1"># Otherwise it looks like a bug in the code.</span>
 <span class="ne">--&gt; </span><span class="mi">449</span>                     <span class="n">six</span><span class="o">.</span><span class="n">raise_from</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">450</span>         <span class="k">except</span> <span class="p">(</span><span class="n">SocketTimeout</span><span class="p">,</span> <span class="n">BaseSSLError</span><span class="p">,</span> <span class="n">SocketError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">451</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_raise_timeout</span><span class="p">(</span><span class="n">err</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout_value</span><span class="o">=</span><span class="n">read_timeout</span><span class="p">)</span>
 
-<span class="nn">/usr/local/lib/python3.8/dist-packages/urllib3/packages/six.py</span> in <span class="ni">raise_from</span><span class="nt">(value, from_value)</span>
+<span class="nn">/usr/local/lib/python3.9/dist-packages/urllib3/packages/six.py</span> in <span class="ni">raise_from</span><span class="nt">(value, from_value)</span>
 
-<span class="nn">/usr/local/lib/python3.8/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="nn">/usr/local/lib/python3.9/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
 <span class="g g-Whitespace">    </span><span class="mi">442</span>                 <span class="c1"># Python 3</span>
 <span class="g g-Whitespace">    </span><span class="mi">443</span>                 <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">444</span>                     <span class="n">httplib_response</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="g g-Whitespace">    </span><span class="mi">445</span>                 <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">446</span>                     <span class="c1"># Remove the TypeError from the exception chain in</span>
 
-<span class="nn">/usr/lib/python3.8/http/client.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1346</span>         <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1347</span>             <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1348</span>                 <span class="n">response</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1349</span>             <span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1350</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nn">/usr/lib/python3.9/http/client.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1375</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1376</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1377</span>                 <span class="n">response</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1378</span>             <span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1379</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="nn">/usr/lib/python3.8/http/client.py</span> in <span class="ni">begin</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">314</span>         <span class="c1"># read until we get a non-100 response</span>
-<span class="g g-Whitespace">    </span><span class="mi">315</span>         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">316</span>             <span class="n">version</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">reason</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_status</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span>             <span class="k">if</span> <span class="n">status</span> <span class="o">!=</span> <span class="n">CONTINUE</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span>                 <span class="k">break</span>
+<span class="nn">/usr/lib/python3.9/http/client.py</span> in <span class="ni">begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span>         <span class="c1"># read until we get a non-100 response</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span>         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">320</span>             <span class="n">version</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">reason</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_status</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span>             <span class="k">if</span> <span class="n">status</span> <span class="o">!=</span> <span class="n">CONTINUE</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">322</span>                 <span class="k">break</span>
 
-<span class="nn">/usr/lib/python3.8/http/client.py</span> in <span class="ni">_read_status</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span> 
-<span class="g g-Whitespace">    </span><span class="mi">276</span>     <span class="k">def</span> <span class="nf">_read_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">277</span>         <span class="n">line</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">(</span><span class="n">_MAXLINE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;iso-8859-1&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">_MAXLINE</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span>             <span class="k">raise</span> <span class="n">LineTooLong</span><span class="p">(</span><span class="s2">&quot;status line&quot;</span><span class="p">)</span>
+<span class="nn">/usr/lib/python3.9/http/client.py</span> in <span class="ni">_read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span> 
+<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="k">def</span> <span class="nf">_read_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">281</span>         <span class="n">line</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">(</span><span class="n">_MAXLINE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;iso-8859-1&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span>         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">_MAXLINE</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span>             <span class="k">raise</span> <span class="n">LineTooLong</span><span class="p">(</span><span class="s2">&quot;status line&quot;</span><span class="p">)</span>
 
-<span class="nn">/usr/lib/python3.8/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
-<span class="g g-Whitespace">    </span><span class="mi">667</span>         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">668</span>             <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">669</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">670</span>             <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">671</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_occurred</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="nn">/usr/lib/python3.9/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span>         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span>             <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">704</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span>             <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_occurred</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="nn">/usr/lib/python3.8/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1239</span>                   <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
-<span class="g g-Whitespace">   </span><span class="mi">1240</span>                   <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1241</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1242</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1243</span>             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+<span class="nn">/usr/lib/python3.9/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1240</span>                   <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+<span class="g g-Whitespace">   </span><span class="mi">1241</span>                   <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1242</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1243</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1244</span>             <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
 
-<span class="nn">/usr/lib/python3.8/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1097</span>         <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1098</span>             <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1099</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1100</span>             <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+<span class="nn">/usr/lib/python3.9/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1098</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1099</span>             <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1100</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1101</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1102</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -834,7 +641,7 @@ Successfully installed snscrape-0.6.0.20230303
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">TUGAS 1 (crawling data berita)</p>
       </div>
     </a>
     <a class="right-next"
@@ -852,20 +659,6 @@ Successfully installed snscrape-0.6.0.20230303
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
