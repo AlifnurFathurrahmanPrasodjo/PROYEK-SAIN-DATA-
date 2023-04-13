@@ -38,7 +38,7 @@ conn.close()
 
 [0;31m[0m
 [0;31mModuleNotFoundError[0mTraceback (most recent call last)
-[0;32m<ipython-input-1-7c390e5cf80b>[0m in [0;36m<module>[0;34m[0m
+[0;32m<ipython-input-1-7c390e5cf80b>[0m in [0;36m<cell line: 1>[0;34m()[0m
 [0;32m----> 1[0;31m [0;32mimport[0m [0mpyodbc[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      2[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      3[0m [0mserver[0m [0;34m=[0m [0;34m'LAPTOP-ONP6PDFK\SQLEXPRESS'[0m[0;34m[0m[0;34m[0m[0m
