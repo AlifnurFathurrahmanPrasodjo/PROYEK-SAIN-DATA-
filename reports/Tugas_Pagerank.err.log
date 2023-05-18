@@ -15,6 +15,7 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
+# Read the document
 # reading a file and 
 # printing the size of the file
 document = readDoc()
@@ -25,19 +26,19 @@ print(len(document))
 
 [0;31m[0m
 [0;31mStdinNotImplementedError[0mTraceback (most recent call last)
-[0;32m<ipython-input-11-3d2a36d056b4>[0m in [0;36m<cell line: 3>[0;34m()[0m
-[1;32m      1[0m [0;31m# reading a file and[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      2[0m [0;31m# printing the size of the file[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 3[0;31m [0mdocument[0m [0;34m=[0m [0mreadDoc[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      4[0m [0mprint[0m[0;34m([0m[0;34m'The length of the file is:'[0m[0;34m,[0m [0mend[0m[0;34m=[0m[0;34m' '[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0mprint[0m[0;34m([0m[0mlen[0m[0;34m([0m[0mdocument[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m<ipython-input-17-49cc1c84b438>[0m in [0;36m<cell line: 4>[0;34m()[0m
+[1;32m      2[0m [0;31m# reading a file and[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;31m# printing the size of the file[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m [0mdocument[0m [0;34m=[0m [0mreadDoc[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      5[0m [0mprint[0m[0;34m([0m[0;34m'The length of the file is:'[0m[0;34m,[0m [0mend[0m[0;34m=[0m[0;34m' '[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0mprint[0m[0;34m([0m[0mlen[0m[0;34m([0m[0mdocument[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m<ipython-input-8-4da83aee54d1>[0m in [0;36mreadDoc[0;34m()[0m
-[1;32m      2[0m [0;31m# first let's take the document as an input[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m [0;32mdef[0m [0mreadDoc[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 4[0;31m     [0mname[0m [0;34m=[0m [0minput[0m[0;34m([0m[0;34m'Please input a file name: '[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      5[0m     [0mprint[0m[0;34m([0m[0;34m'You have asked for the document {}'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mname[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      6[0m [0;34m[0m[0m
+[0;32m<ipython-input-15-7afa729c1211>[0m in [0;36mreadDoc[0;34m()[0m
+[1;32m      3[0m [0;31m# first let's take the document as an input[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32mdef[0m [0mreadDoc[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 5[0;31m     [0mname[0m [0;34m=[0m [0minput[0m[0;34m([0m[0;34m'Please input a file name: '[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      6[0m     [0mprint[0m[0;34m([0m[0;34m'You have asked for the document {}'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mname[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      7[0m [0;34m[0m[0m
 
 [0;32m/usr/local/lib/python3.10/dist-packages/ipykernel/kernelbase.py[0m in [0;36mraw_input[0;34m(self, prompt)[0m
 [1;32m    846[0m         """

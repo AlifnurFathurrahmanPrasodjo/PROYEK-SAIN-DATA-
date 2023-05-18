@@ -169,7 +169,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Tugas2_pipelines.html">TUGAS 2 (PIPELINES)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">TUGAS 3 (PCA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UTS.html"><strong>UTS</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="Tugas_Pagerank.html"><strong>TUGAS PAGERANK</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas_Pagerank.html">PageRank</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Tugas_Topik_Modelling.html"><strong>TUGAS TOPIK MODELLING</strong></a></li>
 </ul>
 
     </div>
@@ -535,7 +540,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-3c606bfe-e98c-4aa1-b414-b14b4f7e9992">
+  <div id="df-95ba65a8-c188-4f6e-802e-ca722f88b2f7">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -631,7 +636,7 @@ document.write(`
 </table>
 <p>150 rows × 3 columns</p>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-3c606bfe-e98c-4aa1-b414-b14b4f7e9992')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-95ba65a8-c188-4f6e-802e-ca722f88b2f7')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -682,12 +687,12 @@ document.write(`
 
       <script>
         const buttonEl =
-          document.querySelector('#df-3c606bfe-e98c-4aa1-b414-b14b4f7e9992 button.colab-df-convert');
+          document.querySelector('#df-95ba65a8-c188-4f6e-802e-ca722f88b2f7 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-3c606bfe-e98c-4aa1-b414-b14b4f7e9992');
+          const element = document.querySelector('#df-95ba65a8-c188-4f6e-802e-ca722f88b2f7');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -719,10 +724,12 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting pymysql
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pymysql
   Downloading PyMySQL-1.0.3-py3-none-any.whl (43 kB)
 ?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/43.7 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">43.7/43.7 kB</span> <span class=" -Color -Color-Red">2.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">43.7/43.7 kB</span> <span class=" -Color -Color-Red">4.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25h
 </pre></div>
 </div>

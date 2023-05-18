@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TUGAS PAGERANK &#8212; PROYEK SAIN DATA</title>
+    <title>PageRank &#8212; PROYEK SAIN DATA</title>
   
   
   
@@ -60,10 +60,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Tugas_Pagerank';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="Tugas_Topik_Modelling.html" />
+    <link rel="next" title="TUGAS TOPIK MODELLING" href="Tugas_Topik_Modelling.html" />
     <link rel="prev" title="UTS" href="UTS.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -169,7 +171,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Tugas2_pipelines.html">TUGAS 2 (PIPELINES)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas3_PCA.html">TUGAS 3 (PCA)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UTS.html"><strong>UTS</strong></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>TUGAS PAGERANK</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PageRank</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Tugas_Topik_Modelling.html"><strong>TUGAS TOPIK MODELLING</strong></a></li>
 </ul>
 
     </div>
@@ -384,7 +391,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>TUGAS PAGERANK</h1>
+    <h1>PageRank</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -394,18 +401,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peringkasan-teks-dengan-python"><strong>Peringkasan Teks dengan Python</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi"><strong>Implementasi</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries"><strong>1. Importing Libraries</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-untuk-membaca-dokumen-dari-user"><strong>2. Function untuk membaca dokumen dari user</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-untuk-membuat-tokenize-pada-document"><strong>3. Function untuk membuat tokenize pada document</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-document"><strong>4. Read document</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-daftar-kalimat-dalam-dokumen"><strong>5. Membuat daftar kalimat dalam dokumen</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-term-document-matrix-td-matrix-dari-data"><strong>6. Generate term-document matrix (TD matrix) dari data</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mendapatkan-peringkat-setiap-kalimat-menggunakan-textrank"><strong>8. Mendapatkan peringkat setiap kalimat menggunakan textrank</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menemukan-kalimat-kalimat-penting-dan-generate-summary"><strong>9. Menemukan kalimat-kalimat penting dan generate summary</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-summary-ke-file-baru"><strong>10. Write the summary ke file baru</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PageRank</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pagerank-berarah">PAGERANK BERARAH</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#iterasi-0">Iterasi 0:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#iterasi-1">Iterasi 1:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#extractive-summarizer">EXTRACTIVE SUMMARIZER</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -416,37 +418,246 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="tugas-pagerank">
-<h1><strong>TUGAS PAGERANK</strong><a class="headerlink" href="#tugas-pagerank" title="Permalink to this heading">#</a></h1>
-<div class="section" id="peringkasan-teks-dengan-python">
-<h2><strong>Peringkasan Teks dengan Python</strong><a class="headerlink" href="#peringkasan-teks-dengan-python" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Panjang data tekstual meningkat dan orang memiliki lebih sedikit waktu. Seringkali artikel surat kabar memuat teks panjang, katakanlah 1000 -1200 kata. Saat perangkat yang dapat dikenakan menjadi terkenal (Google Glass, Apple Watch, untuk beberapa nama), konten harus beradaptasi dengan ruang layar terbatas yang tersedia di perangkat ini. Tugas menghasilkan ringkasan yang cerdas dan akurat untuk potongan teks yang panjang telah menjadi penelitian populer serta masalah industri.</p>
-</div></blockquote>
-<blockquote>
-<div><p>Peringkasan teks ekstraktif adalah tentang menemukan kalimat yang lebih penting dari suatu dokumen sebagai ringkasan dari dokumen itu. Pendekatan kami menggunakan algoritma TextRank untuk menemukan kalimat ‘penting’ ini.</p>
-</div></blockquote>
-</div>
-<div class="section" id="implementasi">
-<h2><strong>Implementasi</strong><a class="headerlink" href="#implementasi" title="Permalink to this heading">#</a></h2>
-</div>
-<div class="section" id="importing-libraries">
-<h2><strong>1. Importing Libraries</strong><a class="headerlink" href="#importing-libraries" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
+  <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">PyPDF2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>networkx
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting PyPDF2
-  Downloading pypdf2-3.0.1-py3-none-any.whl (232 kB)
-?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/232.6 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+Requirement already satisfied: networkx in /usr/local/lib/python3.10/dist-packages (3.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━ <span class=" -Color -Color-Green">225.3/232.6 kB</span> <span class=" -Color -Color-Red">7.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">232.6/232.6 kB</span> <span class=" -Color -Color-Red">6.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">),(</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">),(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">)])</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">with_labels</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a92abe0a5001eb01d3f947ac0ed827edd22f9a3f2b6159450823ea3ca3196558.png" src="_images/a92abe0a5001eb01d3f947ac0ed827edd22f9a3f2b6159450823ea3ca3196558.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">degree_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1: 0.375,
+ 2: 0.25,
+ 3: 0.375,
+ 4: 0.5,
+ 5: 0.5,
+ 6: 0.5,
+ 7: 0.5,
+ 8: 0.375,
+ 9: 0.125}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">closeness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1: 0.47058823529411764,
+ 2: 0.34782608695652173,
+ 3: 0.47058823529411764,
+ 4: 0.6153846153846154,
+ 5: 0.6153846153846154,
+ 6: 0.6153846153846154,
+ 7: 0.5,
+ 8: 0.47058823529411764,
+ 9: 0.34782608695652173}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1: 0.10714285714285714,
+ 2: 0.0,
+ 3: 0.10714285714285714,
+ 4: 0.5357142857142857,
+ 5: 0.21428571428571427,
+ 6: 0.21428571428571427,
+ 7: 0.25,
+ 8: 0.0,
+ 9: 0.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pagerank">
+<h1>PageRank<a class="headerlink" href="#pagerank" title="Permalink to this heading">#</a></h1>
+<p>PR(p) = PR(p1)/n1+…</p>
+<p>n = banyaknya data yang keluar
+p = banyaknya data yang masuk</p>
+<p>Direct grapth adalah graph berarah</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">Gr</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Gr</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">Gr</span><span class="p">,</span> <span class="n">with_labels</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d8ea7b0eaa98b3b860a34972e4c5260a7d2c75b2e21448583084f0057ea2808b.png" src="_images/d8ea7b0eaa98b3b860a34972e4c5260a7d2c75b2e21448583084f0057ea2808b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pr</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">Gr</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">pr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1: 0.39583382691472263, 2: 0.3020830865426386, 3: 0.3020830865426386}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pagerank-berarah">
+<h1>PAGERANK BERARAH<a class="headerlink" href="#pagerank-berarah" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># create directed graph</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># add nodes</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="c1"># add edges</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">)])</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">with_labels</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a8245b245714b6cffc173dc1781b84f8ab3929baa358e74ed1b495fbebf96379.png" src="_images/a8245b245714b6cffc173dc1781b84f8ab3929baa358e74ed1b495fbebf96379.png" />
+</div>
+</div>
+<p>Dalam rumus PageRank, terdapat dua parameter penting: damping factor (d) dan jumlah total simpul (N). Untuk kasus ini, kita akan menggunakan d = 0,85 dan N = 9.</p>
+<p>PR(1) = PR(2) = PR(3) = PR(4) = PR(5) = PR(6) = PR(7) = PR(8) = PR(9) = 1/9 = 0.1111</p>
+<p>RUMUS</p>
+<p><span class="math notranslate nohighlight">\(PageRank(A) = (1 - d) / N + d * (PR(T1) / C(T1) + ... + PR(Tn) / C(Tn))\)</span></p>
+<p>di mana:</p>
+<ul class="simple">
+<li><p>PageRank(A) adalah nilai PageRank yang akan dihitung untuk node A</p></li>
+<li><p>d adalah faktor pengurangan dampak (biasanya diatur ke 0,85)</p></li>
+<li><p>N adalah jumlah total node dalam grafik</p></li>
+<li><p>T1, T2, …, Tn adalah node yang memiliki tautan ke node A</p></li>
+<li><p>C(T1), C(T2), …, C(Tn) adalah jumlah tautan keluar dari setiap node T1, T2, …, Tn</p></li>
+<li><p>PR(T1), PR(T2), …, PR(Tn) adalah nilai PageRank untuk setiap node T1, T2, …, Tn</p></li>
+</ul>
+</div>
+<div class="section" id="iterasi-0">
+<h1>Iterasi 0:<a class="headerlink" href="#iterasi-0" title="Permalink to this heading">#</a></h1>
+<p>PR(1) = PR(2) = PR(3) = PR(4) = PR(5) = PR(6) = PR(7) = PR(8) = PR(9) = <span class="math notranslate nohighlight">\(\frac{1-0,85}{9}=0.01666666666666667\)</span></p>
+</div>
+<div class="section" id="iterasi-1">
+<h1>Iterasi 1:<a class="headerlink" href="#iterasi-1" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(PR(1) = \frac{1-0,85}{9} +0.85 * (0) = 0.01666666666666667\)</span></p>
+<p><span class="math notranslate nohighlight">\(PR(P2) = \frac{(1-d)}{N} + d * \frac{((PR(Prev P1))}{(|out P1|))} = \frac{(1-0.85)}{9} + 0.85 * \frac{0.01666666666666667}{3} = 0.021388888888888895\)</span></p>
+<p><span class="math notranslate nohighlight">\(PR(P3) = \frac{(1-d)}{N} * \frac{((PR(Prev P1))}{(|out P1|))} = \frac{(1-0.85)}{9} + 0.85 * \frac{0.01666666666666667}{3} = 0.021388888888888895\)</span></p>
+<p><span class="math notranslate nohighlight">\(PR(P4) = \frac{(1-d)}{N} * \frac{((PR(Prev P1))}{(|out P1|))} = \frac{(1-0.85)}{9} + 0.85 * {0.01666666666666667}{3} = 0.021388888888888895\)</span></p>
+<p><span class="math notranslate nohighlight">\(PR(P5) = \frac{(1-d)}{N} * \frac{((PR(Prev P2))}{(|out P2|)}+(\frac{PR(Prev P3))}{(|out P3|))} = \frac{(1-0.85)}{9} + 0.85 * \frac{0.01666666666666667}{2}+  \frac{0.01666666666666667}{2} = 0.03083333695\)</span></p>
+<p><span class="math notranslate nohighlight">\(PR(P6) = \frac{(1-d)}{N} * \frac{((PR(Prev P2))}{(|out P2|)}+  \frac{PR(Prev P3)}{(|out P3|)}+  \frac{(PR(Prev P4))}{(|out P4|))} = \frac{(1-0.85)}{9} + 0.85 * \frac{0.01666666666666667}{2}+  \frac{0.01666666666666667}{2}+  \frac{0.01666666666666667}{1} = 0.0450000039\)</span></p>
+<p><span class="math notranslate nohighlight">\(PR(P7) = \frac{(1-d)}{N} * \frac{((PR(Prev P5))}{(|out P5|)}+  (\frac{PR(Prev P6))}{(|out P6|)}+  \frac{(PR(Prev P9))}{(|out P9|))} = \frac{(1-0.85)}{9} + 0.85 * \frac{0.01666666666666667}{1}+  \frac{0.01666666666666667}{1}+  \frac{0.01666666666666667}{1} = 0.05916666785\)</span></p>
+<p><span class="math notranslate nohighlight">\(PR(P8) = \frac{(1-d)}{N} * \frac{((PR(Prev P7))}{(|out P7|))} = \frac{(1-0.85)}{9} + 0.85 * \frac{0.01666666666666667}{1} = 0.03083333362\)</span></p>
+<p><span class="math notranslate nohighlight">\(PR(P9) = \frac{(1-d)}{N} * \frac{((PR(Prev P8))}{(|out P7|))} = \frac{(1-0.85)}{9} + 0.85 * \frac{0.01666666666666667}{1} = 0.03083333362\)</span></p>
+<p>Perhitungan : <a class="reference external" href="https://docs.google.com/spreadsheets/d/1jh6Y_6ebbKoGnYoZUw06y4ZQNp8vYeBu/edit?usp=share_link&amp;amp;ouid=104366477487099693214&amp;amp;rtpof=true&amp;amp;sd=true">https://docs.google.com/spreadsheets/d/1jh6Y_6ebbKoGnYoZUw06y4ZQNp8vYeBu/edit?usp=share_link&amp;ouid=104366477487099693214&amp;rtpof=true&amp;sd=true</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inisialisasi nilai pagerank awal</span>
+<span class="n">pagerank</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()}</span>
+
+<span class="c1"># damping factor</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mf">0.85</span>
+
+<span class="c1"># iterasi hingga konvergen</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">pagerank_new</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+        <span class="n">pr</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">d</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="c1"># nilai awal pagerank</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+            <span class="n">pr</span> <span class="o">+=</span> <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">pagerank</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">neighbor</span><span class="p">))))</span>
+        <span class="n">pagerank_new</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">pr</span>
+    <span class="n">pagerank</span> <span class="o">=</span> <span class="n">pagerank_new</span>
+    
+
+<span class="c1"># cetak nilai pagerank untuk setiap node</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">pagerank</span><span class="p">[</span><span class="n">node</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Node 1: 0.01666666666666667
+Node 2: 0.021388888888888895
+Node 3: 0.021388888888888895
+Node 4: 0.021388888888888895
+Node 5: 0.03484722222222223
+Node 6: 0.05302777777777779
+Node 7: 0.3046809195053111
+Node 8: 0.2756454399844893
+Node 9: 0.2509653071768661
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="extractive-summarizer">
+<h1>EXTRACTIVE SUMMARIZER<a class="headerlink" href="#extractive-summarizer" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>PyPDF2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting PyPDF2
+  Downloading pypdf2-3.0.1-py3-none-any.whl (232 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/232.6 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">232.6/232.6 kB</span> <span class=" -Color -Color-Red">16.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25h
 </pre></div>
 </div>
@@ -460,7 +671,7 @@ Collecting PyPDF2
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">docx2txt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>docx2txt
 </pre></div>
 </div>
 </div>
@@ -477,7 +688,7 @@ Building wheels for collected packages: docx2txt
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for docx2txt (setup.py) ... ?25l?25hdone
-  Created wheel for docx2txt: filename=docx2txt-0.8-py3-none-any.whl size=3957 sha256=6804443e657cc7f093f1cd01b53c704d76508bbad74a23ab72802f2f70be8bc2
+  Created wheel for docx2txt: filename=docx2txt-0.8-py3-none-any.whl size=3957 sha256=405cb60a8f82edaa29b27979e5e3d063166bfc232148e3678fcf9cb4f4a1d879
   Stored in directory: /root/.cache/pip/wheels/22/58/cf/093d0a6c3ecfdfc5f6ddd5524043b88e59a9a199cb02352966
 Successfully built docx2txt
 </pre></div>
@@ -490,93 +701,24 @@ Successfully installed docx2txt-0.8
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># numpy library helps in working with arrays: array creation and manipulation</span>
-<span class="c1"># this implementation uses array for storing the matrices generated as 2-D arrays</span>
-<span class="c1"># PyPDF2 is a library used for reading the PDF files</span>
-<span class="c1"># docx2txt is the library used for reading Word documents </span>
-<span class="c1"># sys library has been used for printing the size of data structures used in the program</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing important libraries</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">PyPDF2</span>
 <span class="kn">import</span> <span class="nn">docx2txt</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># matplotlib is a library that is used to visualize the data by drawing graphs of matrix inputs</span>
-<span class="c1"># we will use it for drawing the matrices generated later in the program </span>
-<span class="c1"># %matplotlib inline is a command used to show the graphs in the jupyter notebook</span>
-
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># networkx library helps in working with graphs ...</span>
-<span class="c1"># and later performing the PageRank algorithm ...</span>
-<span class="c1"># which is the crux of this implementation to find ...</span>
-<span class="c1"># the importance of each sentence using their &#39;rank&#39; as a metric ...</span>
-<span class="c1"># rank, the output of the method textrank, is a measure of importance of sentences</span>
-<span class="c1"># this library has been used in the cell no. ()</span>
-
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the PunktSentenceTokenizer library is being imported from the file punkt.py contained in package nltk.tokenize </span>
-<span class="c1"># this is used to tokenize the document into sentences</span>
-
-<span class="c1"># Tokenization: Tokenization is the process of demarcating and possibly classifying.. </span>
-<span class="c1"># sections of a string of input characters. </span>
-<span class="c1"># The resulting tokens are then passed on to some other form of processing. </span>
-
 <span class="kn">from</span> <span class="nn">nltk.tokenize.punkt</span> <span class="kn">import</span> <span class="n">PunktSentenceTokenizer</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TfidfTransformer and CountVectorizer libraries are being imported</span>
-
-<span class="c1"># CountVectorizer: In this implementation, a CountVectorizer object is being created that ..</span>
-<span class="c1"># will be used for creating the document-term matrix</span>
-
-<span class="c1"># tFidTransformer: In this implementation,TfidfTransformer is used for executing the method fit_transform()... </span>
-<span class="c1"># which provides the output as a document-term matrix normalized (value 0-1) according to the TF-IDF</span>
-<span class="c1"># TF(Term Frequency): the no. of times a term(a word here) appears in the current document(single sentence here)</span>
-<span class="c1"># IDF(Inverse Document Frequency): the no. of times a term(a word here) appears in the entire corpus</span>
-<span class="c1"># Corpus: set of all sentences</span>
-
-
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span><span class="p">,</span> <span class="n">CountVectorizer</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="function-untuk-membaca-dokumen-dari-user">
-<h2><strong>2. Function untuk membaca dokumen dari user</strong><a class="headerlink" href="#function-untuk-membaca-dokumen-dari-user" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Supported formats: .txt, .pdf</p>
-</div></blockquote>
-<blockquote>
-<div><p>Input: Mengambil nama file sebagai input.</p>
-</div></blockquote>
-<blockquote>
-<div><p>Output: Mengembalikan output string yang berisi konten file</p>
-</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we are going to show an example of how the method is working</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to read the document from user</span>
+<span class="c1"># we are going to show an example of how the method is working</span>
 <span class="c1"># first let&#39;s take the document as an input</span>
 <span class="k">def</span> <span class="nf">readDoc</span><span class="p">():</span>
     <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Please input a file name: &#39;</span><span class="p">)</span> 
@@ -618,18 +760,10 @@ Successfully installed docx2txt-0.8
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="function-untuk-membuat-tokenize-pada-document">
-<h2><strong>3. Function untuk membuat tokenize pada document</strong><a class="headerlink" href="#function-untuk-membuat-tokenize-pada-document" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Input: String dokumen teks</p>
-</div></blockquote>
-<blockquote>
-<div><p>Output: Daftar yang berisi kalimat sebagai elemennya</p>
-</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the function used for tokenizing the sentences</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to tokenize the document</span>
+<span class="c1"># the function used for tokenizing the sentences</span>
 <span class="c1"># tokenization of a sentence: &#39;&#39;&#39;provided in cell() above&#39;&#39;&#39;</span>
 
 <span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">document</span><span class="p">):</span>
@@ -646,25 +780,10 @@ Successfully installed docx2txt-0.8
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="read-document">
-<h2><strong>4. Read document</strong><a class="headerlink" href="#read-document" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;story1.txt&#39;</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;In Banaras District there is a village called Bira in which an old, childless\nwidow used to live. She was a Gond woman named Bhungi and she didn&#39;t\nown either a scrap of land or a house to live in. Her only source of livelihood\nwas a parching oven. The village folk customarily have one meal a day of\nparched grains, so there was always a crowd around Bhungi&#39;s oven.\nWhatever grain she was paid for parching she would grind or fry and eat it.\nShe slept in a corner of the same little shack that sheltered the oven. As soon\nas it was light she&#39;d get up and go out to gather dry leaves from all around to\nmake her fire. She would stack the leaves right next to the oven, and after\ntwelve, light the fire. But on the days when she had to parch grain for Pandit\nUdaybhan Pandey, the owner of the village, she went to bed hungry. She\nwas obliged to work without pay for Pandit Udaybhan Pandey She also had\nto fetch water for his house. And, for this reason, from time to time the oven\nwas not lit. She lived in the Pandit&#39;s village, therefore he had full authority to\nmake her do any sort of odd job. In his opinion if she received food for\nworking from him, how could it be considered as work done without pay?\nHe was doing her a favour, in fact, by letting her live in the village at all.\n It was spring, a day on which the fresh grain was fried and eaten and given\nas a gift. No fire was lit in the houses Bhungi&#39;s oven was being put to good\nuse today. There was a crowd worthy of a village fair around her. She had\nscarcely opportunity to draw a breath. Because of the customer&#39;s impatience,\nsquabbles kept breaking out. Then two servants arrived, each carrying a\nheaped basket of grain from Pandit Udaybhan with the order to parch it right\naway. When Bhungi saw the two baskets she was alarmed. It was already\nafter twelve and even by sunset, she would not have time to parch so much\ngrain. Now she would have to stay at the oven parching until after dark for\nno payment. In despair she took the two baskets. One of the flunkeys said\nmenacingly, &#39;Don&#39;t waste any time or you&#39;ll be sorry.&#39; \n With this command the servants went away and Bhungi began to parch the\ngrain. It&#39;s no laughing matter to parch a whole maund of grain. She had to\nkeep stopping from the parching in order to keep the oven fire going. So by\nsundown not even half the work was done. She was afraid Panditji&#39;s men\nwould be coming. She began to move her hands all the more frantically.\n Soon the servants returned and said, &#39;Well, is the grain parched?&#39;\n Feeling bold, Bhungi said, &#39;Can&#39;t you see? I&#39;m parching it now.&#39;\n &#39;The whole day&#39;s gone and you haven&#39;t finished any more grain than this!\nHave you been roasting it or spoiling it? This is completely uncooked!\nHow&#39;s it going to be used for food? It&#39;s the ruin of us! You’ll see what\nPanditji does to you for this.&#39;\n The result was that that night the oven was dug up and Bhungi was left\nwithout a means of livelihood.\n Bhungi now had no means of support. The villagers suffered a good deal\ntoo from the destruction of the oven. In many houses even at noon, cooked\ncereal was no longer available. People went to Panditji and asked him to\ngive the order for the old woman&#39;s oven to be rebuilt and the fire once more\nlighted, but he paid no attention to them. He could not suffer a loss of face.\nA few people who wished her well urged her to move to another village. But\nher heart would not accept this suggestion. She had spent her fifty miserable\nyears in this village and she loved every leaf on every tree. Here she had\nknown the sorrows and pleasures of life; she could not give it up now in the\nlast days. The very idea of moving distressed her. Sorrow in this village was\npreferable to happiness in another.\n A month went by. Very early one morning Pandit Udaybhan, taking his\nlittle band of servants with him, went out to collect his rents. Now when he\nlooked toward the old woman&#39;s oven he fell into a violent rage: it was being\nmade again. Bhungi was energetically rebuilding it with balls of clay Most\nlikely she&#39;d spent the night at this work and wanted to finish it before the sun\nwas high. She knew that she was going against the Pandit&#39;s wishes, but she\nhoped that he had forgotten his anger by then. But alas, the poor creature had\ngown old without growing wise.\n Suddenly Panditji shouted, &#39;By whose order?&#39; \n Bewildered, Bhungi saw that he was standing before her.\n He demanded once again, &#39;By whose order are you building it?&#39; In a flight\nshe said, &#39;Everybody said I should build it and so I&#39;m building it.&#39;\n &#39;I&#39;ll have it smashed again. &#39;With this he kicked the oven. The wet clay\ncollapsed in a heap. He kicked at the trough again but she ran in front of it\nand took the kick in her side. Rubbing her ribs she said, &#39;Maharaj, you&#39;re not\nafraid of anybody but you ought to fear God. What good does it do you to\nruin me like this! Do you think gold is going to grow out of this small piece\nof land! For your own good, I&#39;m telling you, don&#39;t torment poor people, don&#39;t\nbe the death of me.\n &#39;You&#39;re not going to build any oven here again.\n &#39;If I don&#39;t how am I going to be able to eat!&#39;\n &#39;I&#39;m not responsible for your belly.&#39;\n &#39;But if I do nothing except chores for you where will I go for food!&#39;\n &#39;If you’re going to stay in the village you&#39;ll have to do my chores.\n &#39;I&#39;ll do them when I&#39;ve built my over?. I can&#39;t do your work just for the\nsake of staying in the village.\n &#39;Then don&#39;t, just get out of the village.\n &#39;How can I! I&#39;ve grown old in this hut. My in-laws and their grandparents\nlived in this same hut. Except for Yama, king of death, nobody&#39;s going to\nforce me out of it now.\n &#39;Excellent, now you&#39;re quoting Scripture!&#39; Pandit Udaybhan said. &#39;lf you&#39;d\nworked hard I might have let you stay, but after this I won&#39;t rest until I&#39;ve\nhad you thrown out. ‘To his attendants he said, &#39;Go get a pile of leaves right\naway and set fire to the whole thing; we&#39;ll show her how to make an oven.\n In a moment there was a tremendous racket. The names leapt towards the\nsky, the blaze spread wildly in all directions till the villagers came clustering \naround this mountain of fire. Hopelessly, Bhungi stood by her oven\nwatching the conflagration. Suddenly, with a violent dash, she hurled herself\ninto the names. They came running from everywhere but no one had the\ncourage to go into the mouth of the blaze. In a matter of seconds her\nwithered body was completely consumed.\n At that moment the wind rose with a gust. The liberated flames began to\nrace toward the east. There were some peasants&#39; huts near the oven which\nwere engulfed by the fierce flames. Fed in this way, the blaze spread even\nfurther. Panditji&#39;s barn was in its path and it pounced upon it. By now the\nwhole village was in a panic. They began to band together to put out the fire\nbut the sprinkle of water acted like oil on it and the flames kept mounting\nhigher. Pandit Udaybhan&#39;s splendid mansion was swallowed up; while he\nwatched, it tossed like a ship amid wild waves and disappeared in the sea of\nfire. The sound of lamentation that broke out amidst the ashes was even\nmore pitiful than Bhungi&#39;s grievous cries. &quot;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reading a file and </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the document</span>
+<span class="c1"># reading a file and </span>
 <span class="c1"># printing the size of the file</span>
 <span class="n">document</span> <span class="o">=</span> <span class="n">readDoc</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The length of the file is:&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
@@ -674,19 +793,19 @@ Successfully installed docx2txt-0.8
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">StdinNotImplementedError</span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-11-3d2a36d056b4&gt;</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># reading a file and</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># printing the size of the file</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">document</span> <span class="o">=</span> <span class="n">readDoc</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The length of the file is:&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">document</span><span class="p">))</span>
+<span class="nn">&lt;ipython-input-17-49cc1c84b438&gt;</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># reading a file and</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># printing the size of the file</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">document</span> <span class="o">=</span> <span class="n">readDoc</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The length of the file is:&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">document</span><span class="p">))</span>
 
-<span class="nn">&lt;ipython-input-8-4da83aee54d1&gt;</span> in <span class="ni">readDoc</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># first let&#39;s take the document as an input</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">def</span> <span class="nf">readDoc</span><span class="p">():</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Please input a file name: &#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have asked for the document </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="nn">&lt;ipython-input-15-7afa729c1211&gt;</span> in <span class="ni">readDoc</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># first let&#39;s take the document as an input</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">readDoc</span><span class="p">():</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Please input a file name: &#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have asked for the document </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
 
 <span class="nn">/usr/local/lib/python3.10/dist-packages/ipykernel/kernelbase.py</span> in <span class="ni">raw_input</span><span class="nt">(self, prompt)</span>
 <span class="g g-Whitespace">    </span><span class="mi">846</span>         <span class="s2">&quot;&quot;&quot;</span>
@@ -700,12 +819,10 @@ Successfully installed docx2txt-0.8
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="membuat-daftar-kalimat-dalam-dokumen">
-<h2><strong>5. Membuat daftar kalimat dalam dokumen</strong><a class="headerlink" href="#membuat-daftar-kalimat-dalam-dokumen" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we want to tokenize the document for further processing</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a list of sentences in the document</span>
+<span class="c1"># we want to tokenize the document for further processing</span>
 <span class="c1"># tokenizing the sentence means that we are creating a list of all the sentences of the document.</span>
 <span class="c1"># Need of tokenizing the document: Initially the document is in just a string format.</span>
 <span class="c1"># if we want to process the document, we need to store it in a data structure.</span>
@@ -722,7 +839,7 @@ Successfully installed docx2txt-0.8
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The size of the list in Bytes is: 864
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The size of the list in Bytes is: 872
 The size of the item 0 in Bytes is: 146
 </pre></div>
 </div>
@@ -944,12 +1061,10 @@ more pitiful than Bhungi&#39;s grievous cries.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="generate-term-document-matrix-td-matrix-dari-data">
-<h2><strong>6. Generate term-document matrix (TD matrix) dari data</strong><a class="headerlink" href="#generate-term-document-matrix-td-matrix-dari-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert a collection of text documents to a matrix of token counts</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate term-document matrix (TD matrix) of the data</span>
+<span class="c1"># Convert a collection of text documents to a matrix of token counts</span>
 <span class="c1"># fit_transform method of CountVectorizer() class </span>
 <span class="c1"># Learn the vocabulary dictionary and return term-document matrix. </span>
 <span class="c1"># I/p: An iterable which yields either str, unicode or file objects.</span>
@@ -1144,12 +1259,10 @@ Number of vertices 101
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="mendapatkan-peringkat-setiap-kalimat-menggunakan-textrank">
-<h2><strong>8. Mendapatkan peringkat setiap kalimat menggunakan textrank</strong><a class="headerlink" href="#mendapatkan-peringkat-setiap-kalimat-menggunakan-textrank" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ranks is a dictionary with key=node(sentences) and value=textrank (the rank of each of the sentences)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Getting the rank of every sentence using textrank</span>
+<span class="c1"># ranks is a dictionary with key=node(sentences) and value=textrank (the rank of each of the sentences)</span>
 <span class="n">ranks</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">nx_graph</span><span class="p">)</span>
 
 <span class="c1"># analyse the data type of ranks</span>
@@ -1270,12 +1383,10 @@ The size used by the dictionary in Bytes is: 4696
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="menemukan-kalimat-kalimat-penting-dan-generate-summary">
-<h2><strong>9. Menemukan kalimat-kalimat penting dan generate summary</strong><a class="headerlink" href="#menemukan-kalimat-kalimat-penting-dan-generate-summary" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># enumerate method: returns an enumerate object</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Finding important sentences and generating summary</span>
+<span class="c1"># enumerate method: returns an enumerate object</span>
 <span class="c1"># Use of list Comprehensions</span>
 <span class="c1"># O/p: sentence_array is the sorted(descending order w.r.t. score value) 2-d array of ranks[sentence] and sentence </span>
 <span class="c1"># For example, if there are two sentences: S1 (with a score of S1 = s1) and S2 with score s2, with s2&gt;s1</span>
@@ -1376,12 +1487,10 @@ The size used by the dictionary in Bytes is: 4696
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="write-the-summary-ke-file-baru">
-<h2><strong>10. Write the summary ke file baru</strong><a class="headerlink" href="#write-the-summary-ke-file-baru" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(sentence_list)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Writing the summary to a new file</span>
+<span class="c1"># print(sentence_list)</span>
 <span class="n">summary</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sentence_list</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
 <span class="c1"># save the data in another file, names sum.txt</span>
@@ -1484,7 +1593,6 @@ hoped that he had forgotten his anger by then.
 </div>
 </div>
 </div>
-</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1531,7 +1639,7 @@ hoped that he had forgotten his anger by then.
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title"><strong>TUGAS TOPIK MODELLING</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1553,18 +1661,13 @@ hoped that he had forgotten his anger by then.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peringkasan-teks-dengan-python"><strong>Peringkasan Teks dengan Python</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi"><strong>Implementasi</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-libraries"><strong>1. Importing Libraries</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-untuk-membaca-dokumen-dari-user"><strong>2. Function untuk membaca dokumen dari user</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-untuk-membuat-tokenize-pada-document"><strong>3. Function untuk membuat tokenize pada document</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-document"><strong>4. Read document</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-daftar-kalimat-dalam-dokumen"><strong>5. Membuat daftar kalimat dalam dokumen</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-term-document-matrix-td-matrix-dari-data"><strong>6. Generate term-document matrix (TD matrix) dari data</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mendapatkan-peringkat-setiap-kalimat-menggunakan-textrank"><strong>8. Mendapatkan peringkat setiap kalimat menggunakan textrank</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menemukan-kalimat-kalimat-penting-dan-generate-summary"><strong>9. Menemukan kalimat-kalimat penting dan generate summary</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-the-summary-ke-file-baru"><strong>10. Write the summary ke file baru</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PageRank</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pagerank-berarah">PAGERANK BERARAH</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#iterasi-0">Iterasi 0:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#iterasi-1">Iterasi 1:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#extractive-summarizer">EXTRACTIVE SUMMARIZER</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>
